@@ -4,9 +4,11 @@ Content for my lecture at an internal Predica workshop called Technical Dojo.
 
 ![Technical Dojo graphic](graphics/dojoBanner.png)
 
+If you are going through the materials after the dojo I highly encourage you to check out [A nice tutorial [by Microsoft](https://learn.microsoft.com/en-us/windows/terminal/tutorials/custom-prompt-setup) from [Useful links](#useful-links). It's probably of higher quality than my guide :D
+
 ## Follow allonge guide
 
-My goal for this workshop is that the attendees would walk out with a more pleasing and joyfully terminal configuration.
+My goal for this workshop is that the attendees would walk out with a more pleasing and joyful terminal configuration.
 
 This guide will walk you through basic terminal customizations shown at the talk and link to other useful materials that you can explore on your own.  
 You can follow this guide with me during the meeting or at your paste later :)
@@ -32,20 +34,20 @@ Some commands used today need to be run every time a new PowerShell session is s
 Open the profile with your favorite editor from terminal
 
 ```ps1
-    code $PROFILE
+code $PROFILE
 ```
 
 Or just output the file location and open it manually with `echo $PROFILE`
 
 In case you get the following error
 
-`The file C:\Users\<USER_NAME>\Documents\PowerShell\Microsoft.PowerShell_profile.ps1`
+`File C:\Users\<USER_NAME>\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 cannot be loaded. The file <FILE_NAME> is not digitally signed.`
 
-you need to enable the execution of locally created scripts. This can be done by running `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`
+You need to enable the execution of locally created scripts. This can be done by running `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`
 
 ## 3.1 Context History
 
-By default pressing the up arrow will bring the previous command to terminal. This is fine but a lot better experience can be achieved by **adding the following lines to the profile**
+By default pressing the up arrow will bring the previous command to the terminal. This is fine but a lot better experience can be achieved by **adding the following lines to the profile**
 
 ```ps1
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
@@ -71,9 +73,27 @@ Install command
 
 `winget install JanDeDobbeleer.OhMyPosh -s winget`
 
-Initialize oh my posh **in your PowerShell Profile**
+Initialize oh my posh by placing the following line **in your PowerShell Profile**
 
 `oh-my-posh init pwsh  | Invoke-Expression`
+
+You can view [preinstalled themes](https://ohmyposh.dev/docs/themes) in the context of the current directory by running `Get-PoshThemes` from PowerShell.
+
+Once you decide on which to pick as your own you can set it as the theme by changing the Posh init command **in your PowerShell Profile** and replacing _<THEME_NAME>_ withe the name of the chosen theme:
+
+```ps1
+oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/<THEME_NAME>.omp.json" | Invoke-Expression
+```
+
+e.g.
+
+```ps1
+oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/jandedobbeleer.omp.json" | Invoke-Expression
+```
+
+The commands you place in the PowerShell Profile can be run directly in the terminal but if not placed in the Profile they won't affect new sessions.
+
+If you would like to customize the prompt on your own the current theme can be extracted to a local file with the `oh-my-posh config export --output ./<NAME>.omp.json` command.
 
 ---------------------------
 
