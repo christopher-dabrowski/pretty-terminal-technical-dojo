@@ -4,7 +4,7 @@ Content for my lecture at an internal Predica workshop called Technical Dojo.
 
 ![Technical Dojo graphic](graphics/dojoBanner.png)
 
-If you are going through the materials after the dojo I highly encourage you to check out [A nice tutorial [by Microsoft](https://learn.microsoft.com/en-us/windows/terminal/tutorials/custom-prompt-setup) from [Useful links](#useful-links). It's probably of higher quality than my guide :D
+If you are going through the materials after the dojo I highly encourage you to check out [A nice tutorial by Microsoft](https://learn.microsoft.com/en-us/windows/terminal/tutorials/custom-prompt-setup) from [Useful links](#useful-links). It's probably of higher quality than my guide :D
 
 ## Follow allonge guide
 
